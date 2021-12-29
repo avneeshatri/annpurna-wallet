@@ -18,13 +18,11 @@ public class Wallet {
 	@Property()
 	private String owner ;
 	@Property()
-	private String status ;
-	@Property()
-	private Object properties ;
-	@Property()
-	private Long value;
+	private Long value = 0L;
+	/*@Property
+	private Map<String,Long> allowed ; */
 	@Property
-	private Map<String,Long> allowed ;
+	private String secret ;
 
 	public String getId() {
 		return id;
@@ -58,22 +56,6 @@ public class Wallet {
 		this.owner = owner;
 	}
 
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public Object getProperties() {
-		return properties;
-	}
-
-	public void setProperties(Object properties) {
-		this.properties = properties;
-	}
-
 	public Long getValue() {
 		return this.value ;
 	}
@@ -81,7 +63,7 @@ public class Wallet {
 	public void setValue(Long value) {
 		this.value = value;
 	}
-	
+	/*
 	public void addAllowed(String walletId, Long balance) {
 		if(this.allowed == null) {
 			this.allowed = new HashMap<String,Long> () ;
@@ -100,11 +82,19 @@ public class Wallet {
 	public void setAllowed(Map<String, Long> allowed) {
 		this.allowed = allowed;
 	}
+*/
+	public String getSecret() {
+		return secret;
+	}
+
+	public void setSecret(String secret) {
+		this.secret = secret;
+	}
 
 	@Override
 	public String toString() {
 		return "Wallet [id=" + id + ", createdOn=" + createdOn + ", createdBy=" + createdBy + ","
-				+ ", status=" + status + ", properties=" + properties + "]";
+				+"]";
 	}
 	
 }

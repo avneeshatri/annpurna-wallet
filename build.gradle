@@ -44,7 +44,7 @@ shadowJar {
     classifier = null
 
     manifest {
-        attributes 'Main-Class': 'org.hyperledger.fabric.contract.ContractRouter'
+        attributes 'Main-Class': 'com.annpurna.ledger.api.CustomRouter'
     }
 }
 
