@@ -27,6 +27,7 @@ public class AnnpurnaWalletException extends RuntimeException {
 		AUTH_FAILURE,
 		ASSET_ALREADY_EXIST,
 		INCOMPLETE_INPUT,
+		INVALID_INPUT,
 		OPERATION_NOT_PERMITTED,
 		ILLEGAL_ASSET,
 		NOT_FOUND,

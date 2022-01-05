@@ -2,12 +2,14 @@ package com.annpurna.ledger.api;
 
 import java.util.Map;
 
+import org.hyperledger.fabric.contract.ClientIdentity;
 import org.hyperledger.fabric.contract.Context;
 import org.hyperledger.fabric.shim.ChaincodeException;
 import org.hyperledger.fabric.shim.ChaincodeStub;
 import org.hyperledger.fabric.shim.ext.sbe.StateBasedEndorsement;
 import org.hyperledger.fabric.shim.ext.sbe.impl.StateBasedEndorsementFactory;
 
+import com.annpurna.wallet.crypto.CryptoUtil;
 import com.annpurna.wallet.exception.AnnpurnaWalletException;
 import com.annpurna.wallet.utils.CommonUtils;
 import com.annpurna.wallet.utils.JsonParser;
@@ -51,6 +53,17 @@ public interface HlfShimOperations {
     default String getClientOrgId(final Context ctx) {
         return ctx.getClientIdentity().getMSPID();
     }
+    
+    default void printClientOrgId(final Context ctx) {
+    	ClientIdentity client = ctx.getClientIdentity();
+    	System.out.println("Id:"+client.getId());
+    	System.out.println("MspId:"+client.getMSPID());
+    	System.out.println("OU:"+client.getAttributeValue("OU"));
+    	System.out.println("CN:"+client.getAttributeValue("CN"));
+    	System.out.println("Certificate:"+
+    			 CryptoUtil.base64EndoedString(client.getX509Certificate().getPublicKey().getEncoded()));
+    }
+   
     
     default String getTxInitatorUserID(Context ctx){
     	return new String(ctx.getStub().getCreator());
